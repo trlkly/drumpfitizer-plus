@@ -26,18 +26,19 @@ function textReplace(text) { //function that actually replaces words. Modified f
 //redundant	text = text.replace(/Trump\b/g, 'Drumpf');
 //redundant	text = text.replace(/\bTRUMP\b/g, 'DRUMPF');
             text = text.replace(/\bTRUMP(S|ED|ed|ING|ing)?\b/g, 'DRUMPF$1');
-		        text = text.replace(/\bTrump(S|ed|ing)?\b/g, 'Drumpf$1');
+			text = text.replace(/\bTrump(S|ed|ing)?\b/g, 'Drumpf$1');
 //redundant	text = text.replace(/\bMake America Great Again\b/g, 'Make Donald Drumpf Again');
-		        text = text.replace(/\bMake America Great Again(!?)\b/g, 'Make Donald Drumpf Again$1');
-/*new*/		  text = text.replace(/\b#MakeAmericaGreatAgain\b/g, '#MakeDonaldDrumpfAgain');
-/*new*/		  text = text.replace(/Trump2016/gi, 'Drumpf2016');
-		        text = text.replace(/donald(j?)trump\b/g, 'donald$1drumpf');
+			text = text.replace(/\bMake America Great Again(!?)\b/g, 'Make Donald Drumpf Again$1');
+/*new*/		text = text.replace(/\b#MakeAmericaGreatAgain\b/g, '#MakeDonaldDrumpfAgain');
+/*new*/		text = text.replace(/Trump2016/gi, 'Drumpf2016');
+			text = text.replace(/donald(j?)trump\b/g, 'donald$1drumpf');
 //redundant	text = text.replace(/donaldtrump\b/g, 'donalddrumpf');
 //redundant	text = text.replace(/\brealdonaldtrump\b/g, 'realdonalddrumpf');
-	        	text = text.replace(/DonaldTrump/g, 'DonaldDrumpf');
-/*new*/		  text = text.replace(/\b(donald[ -]*)(j?[ -]*)trump/g, '$1$2drumpf')
-						text = text.replace(/trump([ -]*)(tower)\b/gi, 'drumpf$1$2')
-		return text;
+			text = text.replace(/DonaldTrump/g, 'DonaldDrumpf');
+/*new*/		text = text.replace(/\b(donald[ -]*)(j?[ -]*)trump/g, '$1$2drumpf');
+			text = text.replace(/trump([ -]*)(tower)\b/gi, 'drumpf$1$2');
+/*new*/		text = text.replace(/T-R-U-M-P/gi, 'd-r-u-m-p-f'); 
+			return text;
 	}
 	return null;
 }
@@ -55,8 +56,8 @@ function textNodeReplace(node) {   //faster node walker (for finding text to rep
 	while (walk.nextNode()) {
 		var nodeType = walk.currentNode.parentNode.nodeName;
 		if (nodeType != 'STYLE' && nodeType != 'LINK' && nodeType != 'SCRIPT' 
-				&& nodeType != 'TEXTAREA' && !walk.currentNode.parentNode.isContentEditable
-			  && testSpellCheckOnFirefox (walk.currentNode.parentNode)) { //DO NOT AFFECT TEXT BOXES!!!
+		  && nodeType != 'TEXTAREA' && !walk.currentNode.parentNode.isContentEditable
+		  && testSpellCheckOnFirefox (walk.currentNode.parentNode)) { //DO NOT AFFECT TEXT BOXES!!!
 			walk.currentNode.textContent = textReplace(walk.currentNode.nodeValue);
 		}
 	}
@@ -84,15 +85,13 @@ function hoverTextReplace(node) { //replaces text in tooltips.
 function titleTextReplace() { //replaces text in title. Includes lowercase 'trump' 
 	var oldTitle = document.title;
 	if (window.location.href.search(/dictionary/i) == -1 //excudes dictionaries
-	           && document.title.search(/dictionary/i) == -1 )  { 
-			if (document.title) {
-        document.title = document.title.replace(/trump/g, 'drumpf');
-				document.title = textReplace(document.title); 
-			} else if (typeof window.InstallTrigger != 'undefined') { //using Firefox;
-				document.title = 'Connecting...\u200E';
-			} else //if (!!window.chrome && !!window.chrome.webstore)  //using Chrome
-			{	document.title = document.location.href.split('//')[1] + '\u200E';
-			}
+	  && document.title.search(/dictionary/i) == -1 )  { 
+		if (document.title) {
+			document.title = document.title.replace(/trump/g, 'drumpf');
+			document.title = textReplace(document.title); 
+		} else if (typeof window.InstallTrigger != 'undefined') { //using Firefox;
+			document.title = 'Connecting...\u200E';
+		}
 	} 
 /*	console.log ((document.readyState == 'loading') +' '+ 
 			(window.location.href.search(/trump/i) != -1) +' '+ (document.title != oldTitle)
@@ -140,7 +139,7 @@ setTimeout(unblankTitle, 150);
 
 window.addEventListener('DOMContentLoaded', main) //run the main script once DOM is loaded
 if (document.readyState != 'loading') { main() } //run if DOM is already loaded.
-window.addEventListener('load', main); //run once again after page is completely loaded
+window.addEventListener('load', main); //run again after page is completely loaded, just in case
 
 function main() {
   unblankTitle();
