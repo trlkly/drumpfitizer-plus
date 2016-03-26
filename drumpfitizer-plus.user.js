@@ -149,5 +149,5 @@ function main() {
 	setTimeout(hoverTextReplace, 1500);	
 }
 
-//old naive way--kept for historical reasons:
+//old naive way--kept for historical reasons
 //document.body.innerHTML = document.body.innerHTML.replace(/Trump|TRUMP/g, 'Drumpf');
