@@ -5,8 +5,8 @@
 // @version     0.0.9
 // @grant       none
 // @run-at      document-start
-// @updateURL   https://openuserjs.org/install/BigTSDMB/Drumpf_Card_Plus.user.js
-// @downloadURL https://openuserjs.org/install/BigTSDMB/Drumpf_Card_Plus.user.js
+// @updateURL   https://openuserjs.org/install/BigTSDMB/Drumpfitizer_Plus.user.js
+// @downloadURL https://openuserjs.org/install/BigTSDMB/Drumpfitizer_Plus.user.js
 // ==/UserScript==
 
 function siteCheck() { //list of words in URL to hide until script is finished 
