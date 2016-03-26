@@ -2,7 +2,7 @@
 // @name        Drumpfitizer Plus
 // @namespace   trlkly
 // @include     *
-// @version     0.0.9
+// @version     0.0.11
 // @grant       none
 // @run-at      document-start
 // @updateURL   https://openuserjs.org/install/BigTSDMB/Drumpfitizer_Plus.user.js
@@ -10,7 +10,7 @@
 // ==/UserScript==
 
 function siteCheck() { //list of words in URL to hide until script is finished 
-	var sites = [ 'fivethirtyeight', 'foxnews', 'talkingpointsmemo' ];
+	var sites = [ 'fivethirtyeight', 'foxnews', 'talkingpointsmemo', 'theblaze' ];
 	return ( window.location.href.search(new RegExp(sites.join('|'),'i')) != -1 );
 }
 
